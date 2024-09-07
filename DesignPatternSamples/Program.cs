@@ -1,4 +1,5 @@
 ﻿//using DesignPatternSamples.Creational.Singleton.Problem;
+using DesignPatternSamples.Creational.Factory.Solution;
 using DesignPatternSamples.Creational.Singleton.Solution;
 
 namespace DesignPatternSamples
@@ -16,11 +17,14 @@ namespace DesignPatternSamples
 
 
             // Singleton Solution Code
-            ConfigManager configManager1 = ConfigManager.getInstance();
-            configManager1.Set("name", "gof");
+            //ConfigManager configManager1 = ConfigManager.getInstance();
+            //configManager1.Set("name", "gof");
 
-            ConfigManager configManager2 = ConfigManager.getInstance();
-            Console.WriteLine(configManager2.Get("name"));
+            //ConfigManager configManager2 = ConfigManager.getInstance();
+            //Console.WriteLine(configManager2.Get("name"));
+
+            ProductsController controller = new ProductsController();
+            controller.ListProducts();
         }
     }
 }
