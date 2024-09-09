@@ -1,4 +1,5 @@
 ﻿//using DesignPatternSamples.Creational.Singleton.Problem;
+using DesignPatternSamples.Creational.AbstractFactory.Solution;
 using DesignPatternSamples.Creational.Factory.Solution;
 using DesignPatternSamples.Creational.Singleton.Solution;
 
@@ -23,8 +24,12 @@ namespace DesignPatternSamples
             //ConfigManager configManager2 = ConfigManager.getInstance();
             //Console.WriteLine(configManager2.Get("name"));
 
-            ProductsController controller = new ProductsController();
-            controller.ListProducts();
+            // Factory Method
+            //ProductsController controller = new ProductsController();
+            //controller.ListProducts();
+
+            // Abstract Factory
+            new ContactForm().Render(new MaterialWidgetFactory());
         }
     }
 }
