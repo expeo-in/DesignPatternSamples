@@ -1,7 +1,9 @@
 ﻿//using DesignPatternSamples.Creational.Singleton.Problem;
 using DesignPatternSamples.Creational.AbstractFactory.Solution;
+using DesignPatternSamples.Creational.Builder.Solution;
 using DesignPatternSamples.Creational.Factory.Solution;
 using DesignPatternSamples.Creational.Singleton.Solution;
+using System.Globalization;
 
 namespace DesignPatternSamples
 {
@@ -29,7 +31,21 @@ namespace DesignPatternSamples
             //controller.ListProducts();
 
             // Abstract Factory
-            new ContactForm().Render(new MaterialWidgetFactory());
+            //new ContactForm().Render(new MaterialWidgetFactory());
+
+            // Builder
+            var presentation = new Presentation();
+            presentation.AddSlide(new Creational.Builder.Problem.Slide("Intro Page"));
+            presentation.AddSlide(new Creational.Builder.Problem.Slide("Main Page"));
+            presentation.AddSlide(new Creational.Builder.Problem.Slide("Summary Page"));
+
+            var builder = new MovieBuilder();
+            presentation.Export(builder);
+            builder.getMovie();
+
+            var builder2 = new PdfDocumentBuilder();
+            presentation.Export(builder2);
+            builder2.GetPdfDocument();
         }
     }
 }
