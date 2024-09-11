@@ -3,6 +3,7 @@ using DesignPatternSamples.Creational.AbstractFactory.Solution;
 using DesignPatternSamples.Creational.Builder.Solution;
 using DesignPatternSamples.Creational.Factory.Solution;
 using DesignPatternSamples.Creational.Singleton.Solution;
+using DesignPatternSamples.Structural.Composite.Problem;
 using System.Globalization;
 
 namespace DesignPatternSamples
@@ -34,18 +35,35 @@ namespace DesignPatternSamples
             //new ContactForm().Render(new MaterialWidgetFactory());
 
             // Builder
-            var presentation = new Presentation();
-            presentation.AddSlide(new Creational.Builder.Problem.Slide("Intro Page"));
-            presentation.AddSlide(new Creational.Builder.Problem.Slide("Main Page"));
-            presentation.AddSlide(new Creational.Builder.Problem.Slide("Summary Page"));
+            //var presentation = new Presentation();
+            //presentation.AddSlide(new Creational.Builder.Problem.Slide("Intro Page"));
+            //presentation.AddSlide(new Creational.Builder.Problem.Slide("Main Page"));
+            //presentation.AddSlide(new Creational.Builder.Problem.Slide("Summary Page"));
 
-            var builder = new MovieBuilder();
-            presentation.Export(builder);
-            builder.getMovie();
+            //var builder = new MovieBuilder();
+            //presentation.Export(builder);
+            //builder.getMovie();
 
-            var builder2 = new PdfDocumentBuilder();
-            presentation.Export(builder2);
-            builder2.GetPdfDocument();
+            //var builder2 = new PdfDocumentBuilder();
+            //presentation.Export(builder2);
+            //builder2.GetPdfDocument();
+
+            // Composite
+            var group1 = new Group();
+            group1.Add(new Shape());
+            group1.Add(new Shape());
+            group1.Render();
+
+
+            var group2 = new Group();
+            group2.Add(new Shape());
+            group2.Add(new Shape());
+            group2.Render();
+
+            var group = new Group();
+            group.Add(group1);
+            group.Add(group2);
+
         }
     }
 }
