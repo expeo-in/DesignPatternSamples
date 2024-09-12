@@ -3,6 +3,9 @@ using DesignPatternSamples.Creational.AbstractFactory.Solution;
 using DesignPatternSamples.Creational.Builder.Solution;
 using DesignPatternSamples.Creational.Factory.Solution;
 using DesignPatternSamples.Creational.Singleton.Solution;
+using DesignPatternSamples.Structural.Adapter.Problem;
+using DesignPatternSamples.Structural.Adapter.Problem.AvaFilters;
+using DesignPatternSamples.Structural.Adapter.Solution;
 using DesignPatternSamples.Structural.Composite.Problem;
 using System.Globalization;
 
@@ -49,21 +52,34 @@ namespace DesignPatternSamples
             //builder2.GetPdfDocument();
 
             // Composite
-            var group1 = new Group();
-            group1.Add(new Shape());
-            group1.Add(new Shape());
-            group1.Render();
+            //var group1 = new Group();
+            //group1.Add(new Shape());
+            //group1.Add(new Shape());
+            //group1.Render();
 
 
-            var group2 = new Group();
-            group2.Add(new Shape());
-            group2.Add(new Shape());
-            group2.Render();
+            //var group2 = new Group();
+            //group2.Add(new Shape());
+            //group2.Add(new Shape());
+            //group2.Render();
 
-            var group = new Group();
-            group.Add(group1);
-            group.Add(group2);
+            //var group = new Group();
+            //group.Add(group1);
+            //group.Add(group2);
 
+
+            //Adapter 
+            var imageView = new ImageView(new Image());
+            imageView.Apply(new VividFilter());
+
+            //Use third party filter
+            var caramelFilter = new Caramel();
+            caramelFilter.Init();
+
+            // caramaelFilter doesn't implement IFilter
+            //imageView.Apply(caramelFilter);
+
+            imageView.Apply(new CaramelFilter(new Caramel()));
         }
     }
 }
