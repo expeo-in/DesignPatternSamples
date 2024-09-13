@@ -7,6 +7,7 @@ using DesignPatternSamples.Structural.Adapter.Problem;
 using DesignPatternSamples.Structural.Adapter.Problem.AvaFilters;
 using DesignPatternSamples.Structural.Adapter.Solution;
 using DesignPatternSamples.Structural.Composite.Problem;
+using DesignPatternSamples.Structural.Decorator.Solution;
 using System.Globalization;
 
 namespace DesignPatternSamples
@@ -69,17 +70,21 @@ namespace DesignPatternSamples
 
 
             //Adapter 
-            var imageView = new ImageView(new Image());
-            imageView.Apply(new VividFilter());
+            //var imageView = new ImageView(new Image());
+            //imageView.Apply(new VividFilter());
 
-            //Use third party filter
-            var caramelFilter = new Caramel();
-            caramelFilter.Init();
+            ////Use third party filter
+            //var caramelFilter = new Caramel();
+            //caramelFilter.Init();
 
-            // caramaelFilter doesn't implement IFilter
-            //imageView.Apply(caramelFilter);
+            //// caramaelFilter doesn't implement IFilter
+            ////imageView.Apply(caramelFilter);
 
-            imageView.Apply(new CaramelFilter(new Caramel()));
+            //imageView.Apply(new CaramelFilter(new Caramel()));
+
+            // Decorator
+            var stream = new EncryptedCloudStream(new CompressedCloudStream(new CloudStream()));
+            stream.Write("sensitive data");
         }
     }
 }
