@@ -8,6 +8,8 @@ using DesignPatternSamples.Structural.Adapter.Problem.AvaFilters;
 using DesignPatternSamples.Structural.Adapter.Solution;
 using DesignPatternSamples.Structural.Composite.Problem;
 using DesignPatternSamples.Structural.Decorator.Solution;
+using DesignPatternSamples.Structural.Facade.Problem;
+using DesignPatternSamples.Structural.Facade.Solution;
 using System.Globalization;
 
 namespace DesignPatternSamples
@@ -83,8 +85,22 @@ namespace DesignPatternSamples
             //imageView.Apply(new CaramelFilter(new Caramel()));
 
             // Decorator
-            var stream = new EncryptedCloudStream(new CompressedCloudStream(new CloudStream()));
-            stream.Write("sensitive data");
+            //var stream = new EncryptedCloudStream(new CompressedCloudStream(new CloudStream()));
+            //stream.Write("sensitive data");
+
+            // Facade
+
+            //problem
+            var server = new NotificationServer();
+            var connection = server.Connect("ip");
+            var authToken = server.Authenticate("AppId", "key");
+            var message = new Message("Hello World");
+            server.Send(authToken, message, "target");
+            connection.Disconnect();
+
+            //solution
+            var service = new NotificationService();
+            service.Send("Hello World", "target");
         }
     }
 }
