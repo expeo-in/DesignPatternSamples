@@ -10,6 +10,7 @@ using DesignPatternSamples.Structural.Composite.Problem;
 using DesignPatternSamples.Structural.Decorator.Solution;
 using DesignPatternSamples.Structural.Facade.Problem;
 using DesignPatternSamples.Structural.Facade.Solution;
+using DesignPatternSamples.Structural.Flyweight.Solution;
 using System.Globalization;
 
 namespace DesignPatternSamples
@@ -89,18 +90,24 @@ namespace DesignPatternSamples
             //stream.Write("sensitive data");
 
             // Facade
+            ////problem
+            //var server = new NotificationServer();
+            //var connection = server.Connect("ip");
+            //var authToken = server.Authenticate("AppId", "key");
+            //var message = new Message("Hello World");
+            //server.Send(authToken, message, "target");
+            //connection.Disconnect();
 
-            //problem
-            var server = new NotificationServer();
-            var connection = server.Connect("ip");
-            var authToken = server.Authenticate("AppId", "key");
-            var message = new Message("Hello World");
-            server.Send(authToken, message, "target");
-            connection.Disconnect();
+            ////solution
+            //var service = new NotificationService();
+            //service.Send("Hello World", "target");
 
-            //solution
-            var service = new NotificationService();
-            service.Send("Hello World", "target");
+            // Flyweight
+            var pointService = new PointService(new PointIconFactory());
+            foreach (var point in pointService.GetPoints())
+            {
+                point.Draw();
+            }
         }
     }
 }
