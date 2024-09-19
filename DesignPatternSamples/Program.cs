@@ -6,6 +6,7 @@ using DesignPatternSamples.Creational.Singleton.Solution;
 using DesignPatternSamples.Structural.Adapter.Problem;
 using DesignPatternSamples.Structural.Adapter.Problem.AvaFilters;
 using DesignPatternSamples.Structural.Adapter.Solution;
+using DesignPatternSamples.Structural.Bridge.Solution;
 using DesignPatternSamples.Structural.Composite.Problem;
 using DesignPatternSamples.Structural.Decorator.Solution;
 using DesignPatternSamples.Structural.Facade.Problem;
@@ -103,11 +104,17 @@ namespace DesignPatternSamples
             //service.Send("Hello World", "target");
 
             // Flyweight
-            var pointService = new PointService(new PointIconFactory());
-            foreach (var point in pointService.GetPoints())
-            {
-                point.Draw();
-            }
+            //var pointService = new PointService(new PointIconFactory());
+            //foreach (var point in pointService.GetPoints())
+            //{
+            //    point.Draw();
+            //}
+
+            // Bridge
+            //var remoteControl = new RemoteControl(new SonyTV());
+            //remoteControl.TurnOn();
+            var remoteControl = new AdvancedRemoteControl(new SamsungTV());
+            remoteControl.TurnOn();
         }
     }
 }
