@@ -12,6 +12,8 @@ using DesignPatternSamples.Structural.Decorator.Solution;
 using DesignPatternSamples.Structural.Facade.Problem;
 using DesignPatternSamples.Structural.Facade.Solution;
 using DesignPatternSamples.Structural.Flyweight.Solution;
+//using DesignPatternSamples.Structural.Proxy.Problem;
+using DesignPatternSamples.Structural.Proxy.Solution;
 using System.Globalization;
 
 namespace DesignPatternSamples
@@ -113,8 +115,28 @@ namespace DesignPatternSamples
             // Bridge
             //var remoteControl = new RemoteControl(new SonyTV());
             //remoteControl.TurnOn();
-            var remoteControl = new AdvancedRemoteControl(new SamsungTV());
-            remoteControl.TurnOn();
+            //var remoteControl = new AdvancedRemoteControl(new SamsungTV());
+            //remoteControl.TurnOn();
+
+            //Proxy
+
+            //Problem
+            //string[] filenames = {"a", "b", "c"};
+            //var library = new Library();
+            //foreach (var filename in filenames) {
+            //    //library.AddEbook(new Ebook(filename));
+            //    library.AddEbook(new EbookProxy(filename));
+            //}
+
+            string[] filenames = { "a", "b", "c" };
+            var library = new Library();
+            foreach (var filename in filenames)
+            {
+                //library.AddEbook(new Ebook(filename));
+                library.AddEbook(new EbookProxy(filename));
+            }
+
+            library.OpenEbook("a");
         }
     }
 }
