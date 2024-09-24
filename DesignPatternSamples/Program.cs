@@ -1,4 +1,7 @@
 ﻿//using DesignPatternSamples.Creational.Singleton.Problem;
+
+using DesignPatternSamples.Behavioral.Memento.Solution;
+//using DesignPatternSamples.Behavioral.Memento.Problem;
 using DesignPatternSamples.Creational.AbstractFactory.Solution;
 using DesignPatternSamples.Creational.Builder.Solution;
 using DesignPatternSamples.Creational.Factory.Solution;
@@ -128,15 +131,40 @@ namespace DesignPatternSamples
             //    library.AddEbook(new EbookProxy(filename));
             //}
 
-            string[] filenames = { "a", "b", "c" };
-            var library = new Library();
-            foreach (var filename in filenames)
-            {
-                //library.AddEbook(new Ebook(filename));
-                library.AddEbook(new EbookProxy(filename));
-            }
+            // Proxy
+            //string[] filenames = { "a", "b", "c" };
+            //var library = new Library();
+            //foreach (var filename in filenames)
+            //{
+            //    //library.AddEbook(new Ebook(filename));
+            //    library.AddEbook(new EbookProxy(filename));
+            //}
 
-            library.OpenEbook("a");
+            //library.OpenEbook("a");
+
+            // Memento
+            //// Problem
+            //Editor editor = new Editor();
+            //editor.Content = "a";
+            //editor.Content = "b";
+            //editor.Content = "c";
+            //editor.Restore();
+            //editor.Restore();
+            //Console.WriteLine(editor.Content);
+
+            Editor editor = new Editor();
+            History history = new History();
+            editor.Content = "a";
+            history.Push(editor.CreateState());
+
+            editor.Content = "b";
+            history.Push(editor.CreateState());
+
+            editor.Content = "c";
+            editor.Restore(history.Pop());
+            editor.Restore(history.Pop());
+
+            Console.WriteLine(editor.Content);
         }
     }
 }
