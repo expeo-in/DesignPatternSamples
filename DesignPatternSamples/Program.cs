@@ -1,6 +1,8 @@
 ﻿//using DesignPatternSamples.Creational.Singleton.Problem;
 
 using DesignPatternSamples.Behavioral.Memento.Solution;
+using DesignPatternSamples.Behavioral.State.Solution;
+
 //using DesignPatternSamples.Behavioral.Memento.Problem;
 using DesignPatternSamples.Creational.AbstractFactory.Solution;
 using DesignPatternSamples.Creational.Builder.Solution;
@@ -152,19 +154,26 @@ namespace DesignPatternSamples
             //editor.Restore();
             //Console.WriteLine(editor.Content);
 
-            Editor editor = new Editor();
-            History history = new History();
-            editor.Content = "a";
-            history.Push(editor.CreateState());
+            //Editor editor = new Editor();
+            //History history = new History();
+            //editor.Content = "a";
+            //history.Push(editor.CreateState());
 
-            editor.Content = "b";
-            history.Push(editor.CreateState());
+            //editor.Content = "b";
+            //history.Push(editor.CreateState());
 
-            editor.Content = "c";
-            editor.Restore(history.Pop());
-            editor.Restore(history.Pop());
+            //editor.Content = "c";
+            //editor.Restore(history.Pop());
+            //editor.Restore(history.Pop());
 
-            Console.WriteLine(editor.Content);
+            //Console.WriteLine(editor.Content);
+
+
+            // State
+            var canvas = new Canvas();
+            canvas.CurrentTool = new BrushTool();
+            canvas.MouseDown();
+            canvas.MouseUp();
         }
     }
 }
