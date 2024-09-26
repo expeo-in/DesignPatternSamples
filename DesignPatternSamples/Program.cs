@@ -1,5 +1,7 @@
 ﻿//using DesignPatternSamples.Creational.Singleton.Problem;
 
+//using DesignPatternSamples.Behavioral.Iterator.Problem;
+using DesignPatternSamples.Behavioral.Iterator.Solution;
 using DesignPatternSamples.Behavioral.Memento.Solution;
 using DesignPatternSamples.Behavioral.State.Solution;
 
@@ -170,10 +172,33 @@ namespace DesignPatternSamples
 
 
             // State
-            var canvas = new Canvas();
-            canvas.CurrentTool = new BrushTool();
-            canvas.MouseDown();
-            canvas.MouseUp();
+            //var canvas = new Canvas();
+            //canvas.CurrentTool = new BrushTool();
+            //canvas.MouseDown();
+            //canvas.MouseUp();
+
+            // Iterator
+            //var browseHistory = new BrowseHistory();
+            //browseHistory.Push("a");
+            //browseHistory.Push("b");
+            //browseHistory.Push("c");
+            //for (int i = 0; i < browseHistory.Urls.Count; i++)
+            //{
+            //    Console.WriteLine(browseHistory.Urls[i]);
+            //}
+
+            var browseHistory = new BrowseHistory();
+            browseHistory.Push("a");
+            browseHistory.Push("b");
+            browseHistory.Push("c");
+
+            var iterator = browseHistory.CreateIterator();
+            while (iterator.HasNext())
+            {
+                var url = iterator.Current();
+                Console.WriteLine(url);
+                iterator.Next();
+            }
         }
     }
 }
