@@ -5,6 +5,8 @@ using DesignPatternSamples.Behavioral.Iterator.Solution;
 using DesignPatternSamples.Behavioral.Memento.Solution;
 using DesignPatternSamples.Behavioral.State.Solution;
 using DesignPatternSamples.Behavioral.Strategy.Solution;
+using DesignPatternSamples.Behavioral.Template.Solution;
+
 
 
 //using DesignPatternSamples.Behavioral.Memento.Problem;
@@ -205,8 +207,15 @@ namespace DesignPatternSamples
             //}
 
             // Strategy
-            var imageStorage = new ImageStorage(new JPGCompressor(), new BlackAndWhiteFilter());
-            imageStorage.Store("a");
+            //var imageStorage = new ImageStorage(new JPGCompressor(), new BlackAndWhiteFilter());
+            //imageStorage.Store("a");
+
+            // Template
+            var transferMoneyTask = new TransferMoneyTask();
+            transferMoneyTask.Execute();
+
+            var generateReportTask = new GenerateReportTask();
+            generateReportTask.Execute();
         }
     }
 }
