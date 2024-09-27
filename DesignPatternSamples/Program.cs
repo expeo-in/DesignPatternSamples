@@ -4,6 +4,8 @@
 using DesignPatternSamples.Behavioral.Iterator.Solution;
 using DesignPatternSamples.Behavioral.Memento.Solution;
 using DesignPatternSamples.Behavioral.State.Solution;
+using DesignPatternSamples.Behavioral.Strategy.Solution;
+
 
 //using DesignPatternSamples.Behavioral.Memento.Problem;
 using DesignPatternSamples.Creational.AbstractFactory.Solution;
@@ -22,6 +24,7 @@ using DesignPatternSamples.Structural.Flyweight.Solution;
 //using DesignPatternSamples.Structural.Proxy.Problem;
 using DesignPatternSamples.Structural.Proxy.Solution;
 using System.Globalization;
+using System.Net.Http.Headers;
 
 namespace DesignPatternSamples
 {
@@ -187,18 +190,23 @@ namespace DesignPatternSamples
             //    Console.WriteLine(browseHistory.Urls[i]);
             //}
 
-            var browseHistory = new BrowseHistory();
-            browseHistory.Push("a");
-            browseHistory.Push("b");
-            browseHistory.Push("c");
+            // Iterator
+            //var browseHistory = new BrowseHistory();
+            //browseHistory.Push("a");
+            //browseHistory.Push("b");
+            //browseHistory.Push("c");
 
-            var iterator = browseHistory.CreateIterator();
-            while (iterator.HasNext())
-            {
-                var url = iterator.Current();
-                Console.WriteLine(url);
-                iterator.Next();
-            }
+            //var iterator = browseHistory.CreateIterator();
+            //while (iterator.HasNext())
+            //{
+            //    var url = iterator.Current();
+            //    Console.WriteLine(url);
+            //    iterator.Next();
+            //}
+
+            // Strategy
+            var imageStorage = new ImageStorage(new JPGCompressor(), new BlackAndWhiteFilter());
+            imageStorage.Store("a");
         }
     }
 }
