@@ -1,6 +1,7 @@
 ﻿//using DesignPatternSamples.Creational.Singleton.Problem;
 
 //using DesignPatternSamples.Behavioral.Iterator.Problem;
+using DesignPatternSamples.Behavioral.Command.Solution;
 using DesignPatternSamples.Behavioral.Iterator.Solution;
 using DesignPatternSamples.Behavioral.Memento.Solution;
 using DesignPatternSamples.Behavioral.State.Solution;
@@ -211,11 +212,18 @@ namespace DesignPatternSamples
             //imageStorage.Store("a");
 
             // Template
-            var transferMoneyTask = new TransferMoneyTask();
-            transferMoneyTask.Execute();
+            //var transferMoneyTask = new TransferMoneyTask();
+            //transferMoneyTask.Execute();
 
-            var generateReportTask = new GenerateReportTask();
-            generateReportTask.Execute();
+            //var generateReportTask = new GenerateReportTask();
+            //generateReportTask.Execute();
+
+            // Command
+
+            CustomerService customerService = new CustomerService();
+            AddCustomerCommand command = new AddCustomerCommand(customerService);
+            Button button = new Button(command);
+            button.Click();
         }
     }
 }
