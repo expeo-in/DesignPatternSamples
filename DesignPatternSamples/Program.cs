@@ -3,7 +3,9 @@
 //using DesignPatternSamples.Behavioral.Iterator.Problem;
 using DesignPatternSamples.Behavioral.Command.Solution;
 using DesignPatternSamples.Behavioral.Iterator.Solution;
+using DesignPatternSamples.Behavioral.Mediator.SolutionUsingObserver;
 using DesignPatternSamples.Behavioral.Memento.Solution;
+using DesignPatternSamples.Behavioral.Observer.Solution;
 using DesignPatternSamples.Behavioral.State.Solution;
 using DesignPatternSamples.Behavioral.Strategy.Solution;
 using DesignPatternSamples.Behavioral.Template.Solution;
@@ -219,11 +221,25 @@ namespace DesignPatternSamples
             //generateReportTask.Execute();
 
             // Command
+            //CustomerService customerService = new CustomerService();
+            //AddCustomerCommand command = new AddCustomerCommand(customerService);
+            //Button button = new Button(command);
+            //button.Click();
 
-            CustomerService customerService = new CustomerService();
-            AddCustomerCommand command = new AddCustomerCommand(customerService);
-            Button button = new Button(command);
-            button.Click();
+            // Observer
+            //SpreadSheet spreadSheet = new SpreadSheet();
+            //Chart chart = new Chart();
+            //DataSource dataSource = new DataSource();
+            //dataSource.AddObserver(spreadSheet);
+            //dataSource.AddObserver(chart);
+
+            //dataSource.Value = 10;
+
+            // Mediator
+            var articleDialogBox = new ArticleDialogBox();
+            articleDialogBox.SimulateUserInteraction();
+
+
         }
     }
 }
