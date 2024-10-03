@@ -1,6 +1,7 @@
 ﻿//using DesignPatternSamples.Creational.Singleton.Problem;
 
 //using DesignPatternSamples.Behavioral.Iterator.Problem;
+using DesignPatternSamples.Behavioral.ChainOfResponsibility.Solution;
 using DesignPatternSamples.Behavioral.Command.Solution;
 using DesignPatternSamples.Behavioral.Iterator.Solution;
 using DesignPatternSamples.Behavioral.Mediator.SolutionUsingObserver;
@@ -236,10 +237,15 @@ namespace DesignPatternSamples
             //dataSource.Value = 10;
 
             // Mediator
-            var articleDialogBox = new ArticleDialogBox();
-            articleDialogBox.SimulateUserInteraction();
+            //var articleDialogBox = new ArticleDialogBox();
+            //articleDialogBox.SimulateUserInteraction();
 
-
+            // Chain of Responsibility
+            var compressor = new Compressor(null);
+            var logger = new Logger(compressor);
+            var authenticator = new Authenticator(logger);
+            var webserver = new Webserver(authenticator);
+            webserver.Handle(new HttpRequest { Username = "admin", Password = "admin123"});
         }
     }
 }
