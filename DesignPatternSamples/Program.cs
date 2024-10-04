@@ -10,6 +10,10 @@ using DesignPatternSamples.Behavioral.Observer.Solution;
 using DesignPatternSamples.Behavioral.State.Solution;
 using DesignPatternSamples.Behavioral.Strategy.Solution;
 using DesignPatternSamples.Behavioral.Template.Solution;
+//using DesignPatternSamples.Behavioral.Visitor.Problem;
+using DesignPatternSamples.Behavioral.Visitor.Solution;
+
+
 
 
 
@@ -241,11 +245,26 @@ namespace DesignPatternSamples
             //articleDialogBox.SimulateUserInteraction();
 
             // Chain of Responsibility
-            var compressor = new Compressor(null);
-            var logger = new Logger(compressor);
-            var authenticator = new Authenticator(logger);
-            var webserver = new Webserver(authenticator);
-            webserver.Handle(new HttpRequest { Username = "admin", Password = "admin123"});
+            //var compressor = new Compressor(null);
+            //var logger = new Logger(compressor);
+            //var authenticator = new Authenticator(logger);
+            //var webserver = new Webserver(authenticator);
+            //webserver.Handle(new HttpRequest { Username = "admin", Password = "admin123"});
+
+            // Visitor
+
+            // Problem
+            //var document = new HtmlDocument();
+            //document.Add(new HeadingNode());
+            //document.Add(new AnchorNode());
+            //document.Highlight();
+
+            //Solution
+            var document = new HtmlDocument();
+            document.Add(new HeadingNode());
+            document.Add(new AnchorNode());
+            document.Apply(new HighlightOperation());
+            document.Apply(new PlainText());
         }
     }
 }
